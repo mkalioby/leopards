@@ -11,6 +11,18 @@ def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     """
     def filter_list(item, **kwargs):
         for k,v in kwargs.items():
+            if k in("OR" , "__or__"):
+                for q in v:
+                    if filter_list(item,**q):
+                        return True
+                return False
+            elif k in("AND","__and__"):
+                for q in v:
+                    if not filter_list(item,**q):
+                        return False
+                return True
+            elif k in ("NOT", "__not__"):
+               return  not filter_list(item,**v)
             key, op = get_key_op(k)
             value = item[key]
             if convert_types and type(v) != type(value):

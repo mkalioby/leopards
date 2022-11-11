@@ -39,10 +39,16 @@ def item_match(value, op, qv):
         return value <= qv
     elif op == "in":
         return value in qv
+    elif op == "nin":
+        return value not in qv
     elif op == "contains":
         return qv in value
+    elif op == "ncontains":
+        return qv not in value
     elif op == "icontains":
         return qv.lower() in value.lower()
+    elif op == "nicontains":
+        return qv.lower() not in value.lower()
     elif op == "null":
         res = value in NULL_VALUES
         return res == qv

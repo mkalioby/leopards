@@ -29,18 +29,30 @@ class TestConditions(unittest.TestCase):
 
     def test_in(self):
         self.assertEqual(len(Q(l, chromosome__in= ('chr1', 'chr22'))), 5)
+    def test_nin(self):
+        self.assertEqual(len(Q(l, chromosome__nin= ('chr1', 'chr22'))), 23)
 
     def test_contains(self):
         self.assertEqual(len(Q(l, chromosome__contains='chr2')), 3)
+    def test_ncontains(self):
+        self.assertEqual(len(Q(l, chromosome__ncontains='chr1')), 16)
 
     def test_contains2(self):
         self.assertEqual(len(Q(l, chromosome__contains='Chr2')), 0)
+    def test_ncontains2(self):
+        self.assertEqual(len(Q(l, chromosome__ncontains='Chr2')), 28)
 
     def test_icontains(self):
         self.assertEqual(len(Q(l, chromosome__icontains='Chr2')), 3)
 
     def test_icontains2(self):
         self.assertEqual(len(Q(l, chromosome__icontains ='chr2')), 3)
+
+    def test_nicontains(self):
+        self.assertEqual(len(Q(l, chromosome__nicontains='Chr2')), 25)
+
+    def test_nicontains2(self):
+        self.assertEqual(len(Q(l, chromosome__nicontains='chr2')), 25)
 
     def test_null(self):
         self.assertEqual(len(Q(l, filter__null= True)), 16)
@@ -63,6 +75,21 @@ class TestConverations(unittest.TestCase):
     def test_decimal(self):
         res = Q(l, {"quality__gte":Decimal(133.47), "quality__lte":Decimal(142.39)})
         self.assertEqual(len(res), 1)
+
+
+class TestCombination(unittest.TestCase):
+    def test_or(self):
+        res = Q(l, {"OR": [{"chromosome": 'chr1', 'start pos': 114372214, 'end pos': 114372214},
+                     {"reference": 'C', 'observed': 'A'}]})
+
+        self.assertEqual(len(res), 2)
+    def test_and(self):
+        res = Q(l, {"__and__": [{"chromosome": 'chr1', 'start pos': 114372214, 'end pos': 114372214},
+                     {"reference__neq": 'G'}]})
+        self.assertEqual(len(res), 1)
+
+    def test_not(self):
+        self.assertEqual(len(Q(l, {"reference":"T", "NOT":{"observed":"C"}})), 4)
 
 
 if __name__ == '__main__':
