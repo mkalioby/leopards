@@ -1,9 +1,12 @@
 import unittest
 from decimal import Decimal
 
-from Query import Q
+
 from test_file import *
 
+def Q(data,query=None,convert_types=True,**kwargs):
+    from Query import Q
+    return list(Q(data,query,convert_types,**kwargs))
 class Employee:
     def __init__(self,name,age):
         self.name = name

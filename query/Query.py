@@ -7,7 +7,7 @@ def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     :param data: the iterable of dicts
     :param query: dictionary holding your query
     :param convert_types: try to convert the field in data to match query type
-    :return: List of the filtered dicts/objects
+    :return: Iterable of type filter
     """
     def filter_list(item, **kwargs):
         if type(item)  in (str, int, float, list, tuple):
@@ -37,4 +37,4 @@ def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     if query is None: query={}
     query.update(kwargs)
     p = partial(filter_list, **query)
-    return list(filter(p, data))
+    return filter(p, data)

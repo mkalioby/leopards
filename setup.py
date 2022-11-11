@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='QyPy',
-    version='0.7.1',
+    version='0.8.0',
     description='Allows filters iterable of dictionary by another dictionary',
     #long_description=open("README.md").read(),
     #long_description_content_type="text/markdown",
@@ -21,7 +21,7 @@ setup(
     include_package_data=True,
     zip_safe=False, # because we're including static files
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
