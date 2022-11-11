@@ -1,7 +1,7 @@
 from functools import partial
 from Q import get_key_op, convert_value,item_match
 
-def query(data:list, query:dict, convert_types=True):
+def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     """
 
     :param data: the iterable of dicts
@@ -18,6 +18,7 @@ def query(data:list, query:dict, convert_types=True):
             if not item_match(value, op, v):
                 return False
         return True
-
+    if query is None: query={}
+    query.update(kwargs)
     p = partial(filter_list, **query)
     return list(filter(p, data))
