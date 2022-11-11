@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='QyPy',
-    version='0.6.1',
+    version='0.7.1',
     description='Allows filters iterable of dictionary by another dictionary',
     #long_description=open("README.md").read(),
     #long_description_content_type="text/markdown",

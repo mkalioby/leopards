@@ -1,15 +1,19 @@
 from functools import partial
-from Q import get_key_op, convert_value,item_match
+from Q import get_key_op, convert_value,check
 
 def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     """
-
+     Query a list of dictionary or objects by a query dict.
     :param data: the iterable of dicts
     :param query: dictionary holding your query
     :param convert_types: try to convert the field in data to match query type
-    :return:
+    :return: List of the filtered dicts/objects
     """
     def filter_list(item, **kwargs):
+        if type(item)  in (str, int, float, list, tuple):
+            raise TypeError("The item in the list shall be dict or object")
+        if type(item) is not dict:
+            item= item.__dict__
         for k,v in kwargs.items():
             if k in("OR" , "__or__"):
                 for q in v:
@@ -27,7 +31,7 @@ def Q(data:list, query:dict=None, convert_types=True, **kwargs):
             value = item[key]
             if convert_types and type(v) != type(value):
                 value = convert_value(value, type(v))
-            if not item_match(value, op, v):
+            if not check(value, op, v):
                 return False
         return True
     if query is None: query={}
