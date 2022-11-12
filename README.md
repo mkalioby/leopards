@@ -1,6 +1,6 @@
 # QyPy
 
-Query list of dictionaries or objects as if you are filtering in  DBMS. You can have dicts objects) that are matched by OR, AND or NOT or all of them.
+Query list of dictionaries or objects as if you are filtering in  DBMS. You can get dicts/objects that are matched by OR, AND or NOT or all of them.
 
 ## Installation
 
@@ -31,7 +31,7 @@ filtered= Q(l,name__contains="k", age__lt = 20)
 
 **Notes:** 
 1. `Q` returns an iterator which can be converted to a list by calling `list`.
-2. Even though, age was `str` in the dict, as the value of in the query dict was int, QyPy converted the value in dict automatically to match the query data type. This behaviour can be stopped by passing `False` to `convert_types` parameter.
+2. Even though, age was `str` in the dict, as the value of in the query dict was `int`, QyPy converted the value in dict automatically to match the query data type. This behaviour can be stopped by passing `False` to `convert_types` parameter.
 
 ## Supported filters
 * `eq`: equals and this default filter
@@ -70,7 +70,7 @@ output
 ```
 
 ### Usage of `NOT`
-`NOT` or `__not__` takes a list of dictionaries to evaluate and returns with the first `True`.  
+`NOT` or `__not__` takes a dict for query run.  
 ```python
 from query import Q
 l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
@@ -81,3 +81,18 @@ output
 ```python
 [{'name': 'John', 'age': '16'}, {'name': 'Sarah', 'age': '21'}]
 ```
+
+### Usage of `AND`
+`AND` or `__and__` takes a list of dict for query run, returns with the first `False`.
+
+```python
+from query import Q
+l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
+filtered= Q(l,{"__and__":[{"age__gte":15},{"age__lt":21}]})
+print(list(filtered))
+```
+output
+```python
+[{'name': 'John', 'age': '16'}, {'name': 'Mike', 'age': '19'}]
+```
+
