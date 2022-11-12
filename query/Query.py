@@ -1,5 +1,8 @@
 from functools import partial
-from Q import get_key_op, convert_value,check
+try:
+    from Q import get_key_op, convert_value,check
+except ModuleNotFoundError:
+    from .Q import get_key_op, convert_value,check
 
 def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     """

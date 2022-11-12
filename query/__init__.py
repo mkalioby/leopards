@@ -1,1 +1,1 @@
-from Query import Q
+from .Query import Q

@@ -4,11 +4,11 @@ from setuptools import find_packages, setup
 
 setup(
     name='QyPy',
-    version='0.8.0',
+    version='0.9.0',
     description='Allows filters iterable of dictionary by another dictionary',
-    #long_description=open("README.md").read(),
-    #long_description_content_type="text/markdown",
-    long_description="Filters List of Dictionaries by a query dictionary",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    #long_description="Filters List of Dictionaries by a query dictionary",
     author='Mohamed El-Kalioby',
     author_email = 'mkalioby@mkalioby.com',
     url = 'https://github.com/mkalioby/QyPy/',

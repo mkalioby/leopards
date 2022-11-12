@@ -72,6 +72,23 @@ class TestConditions(unittest.TestCase):
     def test_null2(self):
         self.assertEqual(len(Q(l, {"filter__isnull": False})), 12)
 
+    def test_startswith(self):
+        self.assertEqual(len(Q(l, {"reference__startswith": 'T'})), 7)
+
+    def test_istartswith(self):
+        self.assertEqual(len(Q(l, {"reference__istartswith": 't'})), 7)
+
+    def test_nstartswith(self):
+        self.assertEqual(len(Q(l, {"reference__nstartswith": 'T'})), 21)
+
+    def test_endswith(self):
+        self.assertEqual(len(Q(l, {"observed__endswith": 'C'})), 5)
+
+    def test_iendsswith(self):
+        self.assertEqual(len(Q(l, {"observed__iendswith": 'C'})), 5)
+
+    def test_nendswith(self):
+        self.assertEqual(len(Q(l, {"observed__nendswith": 'C'})), 23)
 
 class TestConverations(unittest.TestCase):
     def test_int(self):

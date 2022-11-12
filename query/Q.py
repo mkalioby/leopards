@@ -45,6 +45,14 @@ def evaluate(value:type, op:str, qv:type):
         return qv in value
     elif op == "icontains":
         return qv.lower() in value.lower()
+    elif op == "startswith":
+        return value.startswith(qv)
+    elif op == "istartswith":
+        return value.lower().startswith(qv.lower())
+    elif op == "endswith":
+        return value.endswith(qv)
+    elif op == "iendswith":
+        return value.lower().endswith(qv.lower())
     elif op == "isnull":
         res = value in NULL_VALUES
         return res == qv
