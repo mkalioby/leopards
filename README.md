@@ -1,17 +1,20 @@
-# QyPy
+# Leopards
 
-Query list of dictionaries or objects as if you are filtering in  DBMS. You can get dicts/objects that are matched by OR, AND or NOT or all of them.
+Leopards is a way to query list of dictionaries or objects as if you are filtering in  DBMS. 
+You can get dicts/objects that are matched by OR, AND or NOT or all of them.
+As you can see in the comparison they are much faster than Pandas.
+
 
 ## Installation
 
 ```shell
-pip install QyPy
+pip install leopards
 ```
 
 ## Usage
 
 ```python
-from query import Q
+from leopards import Q
 l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
 filtered= Q(l,{'name__contains':"k", "age__lt":20})
 print(list(filtered))
@@ -22,10 +25,12 @@ output
 ```
 
 The above filtration can be written as
+
 ```python
-from query import Q
-l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
-filtered= Q(l,name__contains="k", age__lt = 20)
+from leopards import Q
+
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"}]
+filtered = Q(l, name__contains="k", age__lt=20)
 
 ```
 
@@ -57,11 +62,13 @@ For `eq`,`gt`,`gte`,`lt`,`lte`, `in`, `contains`, `icontains`, `startswith`,`ist
 This section will cover the use of `OR`, `AND` and `NOT`
 
 ### Usage of `OR`
-`OR` or `__or__` takes a list of dictionaries to evaluate and returns with the first `True`.  
+`OR` or `__or__` takes a list of dictionaries to evaluate and returns with the first `True`.
+
 ```python
-from query import Q
-l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
-filtered= Q(l,{"OR":[{"name__contains":"k"}, {"age__gte":21}]})
+from leopards import Q
+
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"}]
+filtered = Q(l, {"OR": [{"name__contains": "k"}, {"age__gte": 21}]})
 print(list(filtered))
 ```
 output
@@ -70,11 +77,13 @@ output
 ```
 
 ### Usage of `NOT`
-`NOT` or `__not__` takes a dict for query run.  
+`NOT` or `__not__` takes a dict for query run.
+
 ```python
-from query import Q
-l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
-filtered= Q(l,{"age__gt":15, "NOT":{"age__eq":19}})
+from leopards import Q
+
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"}]
+filtered = Q(l, {"age__gt": 15, "NOT": {"age__eq": 19}})
 print(list(filtered))
 ```
 output
@@ -86,9 +95,10 @@ output
 `AND` or `__and__` takes a list of dict for query run, returns with the first `False`.
 
 ```python
-from query import Q
-l = [{"name":"John","age":"16"}, {"name":"Mike","age":"19"},{"name":"Sarah","age":"21"}]
-filtered= Q(l,{"__and__":[{"age__gte":15},{"age__lt":21}]})
+from leopards import Q
+
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"}]
+filtered = Q(l, {"__and__": [{"age__gte": 15}, {"age__lt": 21}]})
 print(list(filtered))
 ```
 output

@@ -3,16 +3,16 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='QyPy',
-    version='0.9.1',
-    description='Allows filters iterable of dictionary by another dictionary',
+    name='leopards',
+    version='0.6.1',
+    description='Allows filtering  iterable of dictionary by another dictionary. Much faster than pandas',
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     #long_description="Filters List of Dictionaries by a query dictionary",
     author='Mohamed El-Kalioby',
     author_email = 'mkalioby@mkalioby.com',
-    url = 'https://github.com/mkalioby/QyPy/',
-    download_url='https://github.com/mkalioby/QyPy/',
+    url = 'https://github.com/mkalioby/leopards/',
+    download_url='https://github.com/mkalioby/leopards/',
     license='MIT',
     packages=find_packages(),
     install_requires=[
