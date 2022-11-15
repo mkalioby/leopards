@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='leopards',
-    version='0.10.0',
+    version='0.10.1',
     description='Allows filtering  iterable of dictionary by another dictionary. Much faster than pandas',
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
