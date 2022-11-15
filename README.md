@@ -100,16 +100,16 @@ output
 
 This is done on Python 3.8 running on Ubuntu 22.04 on i7 11th generation and 32 GB of RAM.
 
-| Comparison                                                   | Pandas  | QyPy      |
-|--------------------------------------------------------------|---------|-----------|
-| Package Size     <br/> (Lower is better)                     | 29.8 MB | 7.5 KB    |
-| import Time (Worst) <br/> (Lower is better)                  | 146 ms  | 1.05 ms   |
-| load 10k CSV lines<br/> (Lower is better) *                  | 0.295s  | 0m0.138s  |
-| get first matched record<br/> (Lower is better)              | 0m0.310s | 0m0.017s  |
-| print all filtered records (10/10k) <br/> (Lower is better)  | 0m0.310s | 0m0.137s  | 
-| filter by integers <br/>(Lower is better)                    | 0m0.316s |  0m0.138s |
+| Comparison                                                  | Pandas  | QyPy      |
+|-------------------------------------------------------------|---------|-----------|
+| Package Size     <br/> (Lower is better)                    | 29.8 MB | 7.5 KB    |
+| import Time (Worst) <br/> (Lower is better)                 | 146 ms  | 1.05 ms   |
+| load 10k CSV lines<br/> (Lower is better) <sup>[1]</sup>    | 0.295s  | 0m0.138s  |
+| get first matched record<br/> (Lower is better)             | 0m0.310s | 0m0.017s  |
+| print all filtered records (10/10k) <br/> (Lower is better) | 0m0.310s | 0m0.137s  | 
+| filter by integers <br/>(Lower is better)                   | 0m0.316s |  0m0.138s |
 
-* This was loading the whole csv in memory which was for sake of fair comparison. 
+<sup>[1]</sup> This was loading the whole csv in memory which was for sake of fair comparison. 
 Nevertheless,  QyPy can work with DictReader as an iterable which executes in 0.014s, for it handles line by line.
 
-Thanks for @tahirasma for Pandas stats.
+Thanks for [Asma Tahir](https://github.com/tahirasma) for Pandas stats.
