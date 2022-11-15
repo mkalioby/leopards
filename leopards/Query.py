@@ -1,13 +1,13 @@
 from functools import partial
 try:
     from Q import get_key_op, convert_value,check
-except ModuleNotFoundError:
-    from .Q import get_key_op, convert_value,check
+except ModuleNotFoundError:  # pragma: no cover
+    from .Q import get_key_op, convert_value,check # pragma: no cover
 
-def Q(data:list, query:dict=None, convert_types=True, **kwargs):
+def Q(iterable:list, query:dict=None, convert_types=True, **kwargs):
     """
      Query a list of dictionary or objects by a query dict.
-    :param data: the iterable of dicts
+    :param iterable: the iterable of dicts
     :param query: dictionary holding your query
     :param convert_types: try to convert the field in data to match query type
     :return: Iterable of type filter
@@ -40,4 +40,4 @@ def Q(data:list, query:dict=None, convert_types=True, **kwargs):
     if query is None: query={}
     query.update(kwargs)
     p = partial(filter_list, **query)
-    return filter(p, data)
+    return filter(p, iterable)
