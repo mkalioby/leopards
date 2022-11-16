@@ -3,16 +3,14 @@ import unittest
 from decimal import Decimal
 
 try:
-    from test_file import *
-except ModuleNotFoundError:
     from .test_file import *
+except ModuleNotFoundError:
+    from test_file import *
 
 def Q(data,query=None,convert_types=True,**kwargs):
-    try:
-        from Query import Q
-    except ModuleNotFoundError:
-        from .Query import Q
+    from leopards.Query import Q
     return list(Q(data,query,convert_types,**kwargs))
+
 class Employee:
     def __init__(self,name,age):
         self.name = name
