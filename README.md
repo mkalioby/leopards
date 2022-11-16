@@ -1,5 +1,10 @@
 # Leopards
 
+[![PyPI version](https://badge.fury.io/py/leopards.svg)](https://badge.fury.io/py/leopards)
+[![Python Versions](https://img.shields.io/pypi/pyversions/leopards.svg)](https://img.shields.io/pypi/pyversions/leopards.svg)
+![Coverage](https://img.shields.io/badge/coverage-100%25-success)
+![build status](https://github.com/mkalioby/leopards/actions/workflows/workflow.yml/badge.svg)
+
 Leopards is a way to query list of dictionaries or objects as if you are filtering in  DBMS. 
 You can get dicts/objects that are matched by OR, AND or NOT or all of them.
 As you can see in the comparison they are much faster than Pandas.
