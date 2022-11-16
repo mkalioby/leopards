@@ -1,6 +1,6 @@
 name: Django Basic Dev Tests
 
-on: [pull_request]
+on: [push]
 
 env:
   MODE: Test
