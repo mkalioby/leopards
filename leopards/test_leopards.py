@@ -1,11 +1,17 @@
+#! /usr/bin/env python
 import unittest
 from decimal import Decimal
 
-
-from test_file import *
+try:
+    from test_file import *
+except ModuleNotFoundError:
+    from .test_file import *
 
 def Q(data,query=None,convert_types=True,**kwargs):
-    from Query import Q
+    try:
+        from Query import Q
+    except ModuleNotFoundError:
+        from .Query import Q
     return list(Q(data,query,convert_types,**kwargs))
 class Employee:
     def __init__(self,name,age):

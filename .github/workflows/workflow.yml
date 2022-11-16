@@ -17,11 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest  
+          - ubuntu-latest
+
         python-version:
-          - "3.7"
           - "3.8"
-        
+
     steps:
       - name: "Check out the repo"
         uses: "actions/checkout@v2"
@@ -69,8 +69,7 @@ jobs:
 
       - name: "Combine"
         run: |
-          pip install coverage
-          coverage run query/test.py
+          python -m tox -e coverage
           export TOTAL=$(python -c "import json;print(json.load(open('coverage.json'))['totals']['percent_covered_display'])")
           echo "total=$TOTAL" >> $GITHUB_ENV
           echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
@@ -79,7 +78,7 @@ jobs:
         uses: schneegans/dynamic-badges-action@v1.4.0
         with:
           # GIST_TOKEN is a GitHub personal access token with scope "gist".
-          auth: fcfe46031527327de522ae10cfd4a2b8b0870b46
+          auth: ${{ secrets.GIST_TOKEN }}
           gistID: 452eacc99bb992bc74ccf1db95354d2d   # replace with your real Gist id.
           filename: covbadge.json
           label: Coverage
