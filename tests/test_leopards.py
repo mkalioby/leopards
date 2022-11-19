@@ -134,5 +134,37 @@ class TestException(unittest.TestCase):
     def testInt(self):
         self.assertRaises(TypeError, Q, [1,2,3],{"i__gt":1})
 
+class TestAgg(unittest.TestCase):
+    def testCountDefault(self):
+        from leopards import Count
+        res = Count(l, ["chromosome"])
+        self.assertEqual(list(Q(res, chromosome="chr20"))[0]["count"], 2)
+    def testCountCol(self):
+        from leopards import Count
+        res= Count(l,["chromosome"],"chr_count")
+        self.assertEqual(list(Q(res,chromosome="chr1"))[0]["chr_count"],4)
+    def testMax(self):
+        from leopards import Max
+        res = Max(l, "start pos", ["chromosome"])
+        self.assertEqual(list(Q(res, chromosome="chr10"))[0]["start pos"], "126714752")
+
+    def testMin(self):
+        from leopards import Max
+        res = Max(l, "end pos", ["chromosome"])
+        self.assertEqual(list(Q(res, chromosome="chrX"))[0]["end pos"], "7811643")
+
+    def testSum(self):
+        from leopards import Sum
+        res = Sum(l, "quality", ["chromosome"])
+        v="%.2f" % list(Q(res, chromosome="chr11"))[0]["quality"]
+        self.assertEqual(v, "84.56")
+
+    def testAvg(self):
+        from leopards import Avg
+        res = Avg(l, "quality", ["chromosome"])
+        v="%.2f" % list(Q(res, chromosome="chr11"))[0]["quality"]
+        self.assertEqual(v, "28.19")
+
+
 if __name__ == '__main__':
     unittest.main()

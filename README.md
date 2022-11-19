@@ -111,6 +111,58 @@ output
 [{'name': 'John', 'age': '16'}, {'name': 'Mike', 'age': '19'}]
 ```
 
+## Aggregating Data
+
+You  can run the following aggregations
+* Count
+* Max
+* Min
+* Sum
+* Avg
+
+### Count
+
+Find the count of certain aggregated column
+```python
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"John","age":"19"}]
+from leopards import Count
+count = Count(l,['age'])
+```
+output
+```python
+[{"age":"16","count":1},{"age":"19","count":2}, {"age":"21","count":1}]
+```
+
+### Max
+
+Find the Max value for a certain column in  certain aggregated columns
+```python
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+from leopards import Max
+count = Max(l,"age",['name'])
+```
+output
+```python
+[{'name': 'John', 'age': '19'}, {'name': 'Mike', 'age': '19'}, {'name': 'Sarah', 'age': '21'}]
+```
+
+### Min
+
+Find the Max value for a certain column in  certain aggregated columns
+```python
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+from leopards import Min
+count = Min(l,"age",['name'])
+```
+output
+```python
+[{'name': 'John', 'age': '16'}, {'name': 'Mike', 'age': '19'}, {'name': 'Sarah', 'age': '21'}]
+```
+
+
+
+
+
 ## Comparison with Pandas
 
 This is done on Python 3.8 running on Ubuntu 22.04 on i7 11th generation and 32 GB of RAM.
