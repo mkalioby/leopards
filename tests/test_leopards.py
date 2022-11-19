@@ -139,19 +139,40 @@ class TestAgg(unittest.TestCase):
         from leopards import Count
         res = Count(l, ["chromosome"])
         self.assertEqual(list(Q(res, chromosome="chr20"))[0]["count"], 2)
+    def testCountDefault2(self):
+        from leopards import Count
+        res = Count(l)
+        self.assertEqual(list(res)[0]["count"], 28)
     def testCountCol(self):
         from leopards import Count
         res= Count(l,["chromosome"],"chr_count")
         self.assertEqual(list(Q(res,chromosome="chr1"))[0]["chr_count"],4)
+
+    def testCountCol2(self):
+        from leopards import Count
+        res= Count(l,col_name="chr_count")
+        self.assertEqual(list(res)[0]['chr_count'],28)
+
     def testMax(self):
         from leopards import Max
         res = Max(l, "start pos", ["chromosome"])
         self.assertEqual(list(Q(res, chromosome="chr10"))[0]["start pos"], "126714752")
 
-    def testMin(self):
+    def testMax2(self):
         from leopards import Max
-        res = Max(l, "end pos", ["chromosome"])
-        self.assertEqual(list(Q(res, chromosome="chrX"))[0]["end pos"], "7811643")
+        res = Max(l, "quality",dtype=float)
+        self.assertEqual(list(res)[0]['quality'], 245.66)
+
+    def testMin(self):
+        from leopards import Min
+        res = Min(l, "end pos", ["chromosome"],dtype=float)
+        self.assertEqual(list(Q(res, chromosome="chrX"))[0]["end pos"], 7811643)
+
+    def testMin2(self):
+        from leopards import Min
+        res = Min(l, "quality", dtype=float)
+        self.assertEqual(list(res)[0]["quality"], 6.99)
+
 
     def testSum(self):
         from leopards import Sum
@@ -159,11 +180,23 @@ class TestAgg(unittest.TestCase):
         v="%.2f" % list(Q(res, chromosome="chr11"))[0]["quality"]
         self.assertEqual(v, "84.56")
 
+    def testSum2(self):
+        from leopards import Sum
+        res = Sum(l, "quality")
+        v="%.2f" % list(res)[0]["quality"]
+        self.assertEqual(v, "2133.04")
+
     def testAvg(self):
         from leopards import Avg
         res = Avg(l, "quality", ["chromosome"])
         v="%.2f" % list(Q(res, chromosome="chr11"))[0]["quality"]
         self.assertEqual(v, "28.19")
+
+    def testAvg2(self):
+        from leopards import Avg
+        res = Avg(l, "quality")
+        v="%.2f" % list(res)[0]["quality"]
+        self.assertEqual(v, "76.18")
 
 
 if __name__ == '__main__':
