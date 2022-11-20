@@ -139,12 +139,27 @@ Find the Max value for a certain column in  certain aggregated columns
 ```python
 l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
 from leopards import Max
-count = Max(l,"age",['name'])
+count = Max(l,"age",['name'],dtype=int)
 ```
 output
 ```python
 [{'name': 'John', 'age': '19'}, {'name': 'Mike', 'age': '19'}, {'name': 'Sarah', 'age': '21'}]
 ```
+
+**Notes:**
+* If you don't pass the aggregation columns, the maximum will be found across dataset.
+* You can pass the datatype of the column to convert it on the fly while evaluating
+```python
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+from leopards import Max
+m = Max(l,"age",dtype=int)
+```
+
+output
+```python
+[{'age': 21}]
+```
+
 
 ### Min
 
@@ -152,16 +167,20 @@ Find the Max value for a certain column in  certain aggregated columns
 ```python
 l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
 from leopards import Min
-count = Min(l,"age",['name'])
+m = Min(l,"age",['name'])
 ```
 output
 ```python
 [{'name': 'John', 'age': '16'}, {'name': 'Mike', 'age': '19'}, {'name': 'Sarah', 'age': '21'}]
 ```
+**Note:** 
+* If you don't pass the aggregation columns, the min will be found across dataset.
+* You can pass the datatype of the column to convert it on the fly while evaluating
 
 
+## Sum and Avg
 
-
+Like Min and Max but only works with integers and floats.
 
 ## Comparison with Pandas
 
