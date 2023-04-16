@@ -199,3 +199,7 @@ This is done on Python 3.8 running on Ubuntu 22.04 on i7 11th generation and 32 
 Nevertheless,  Leopards can work with DictReader as an iterable which executes in **0.014s**, then it handles line by line.
 
 Thanks for [Asma Tahir](https://github.com/tahirasma) for Pandas stats.
+
+## Tutorials
+
+* [Work on CSV Files with Leopards](https://dev.to/mkalioby/working-with-csv-by-leopards-5bmd)
