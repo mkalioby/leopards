@@ -200,6 +200,11 @@ Nevertheless,  Leopards can work with DictReader as an iterable which executes i
 
 Thanks for [Asma Tahir](https://github.com/tahirasma) for Pandas stats.
 
+
+## Contributors 
+
+* [saeedesmaili](https://github.com/saeedesmaili)
+
 ## Tutorials
 
 * [Work on CSV Files with Leopards](https://dev.to/mkalioby/working-with-csv-by-leopards-5bmd)
