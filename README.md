@@ -137,7 +137,7 @@ output
 
 Find the Max value for a certain column in  certain aggregated columns
 ```python
-l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"john","age":"19"}]
 from leopards import Max
 count = Max(l,"age",['name'],dtype=int)
 ```
@@ -150,7 +150,7 @@ output
 * If you don't pass the aggregation columns, the maximum will be found across dataset.
 * You can pass the datatype of the column to convert it on the fly while evaluating
 ```python
-l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"john","age":"19"}]
 from leopards import Max
 m = Max(l,"age",dtype=int)
 ```
@@ -165,7 +165,7 @@ output
 
 Find the Max value for a certain column in  certain aggregated columns
 ```python
-l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"Joh","age":"19"}]
+l = [{"name": "John", "age": "16"}, {"name": "Mike", "age": "19"}, {"name": "Sarah", "age": "21"},{"name":"john","age":"19"}]
 from leopards import Min
 m = Min(l,"age",['name'])
 ```
