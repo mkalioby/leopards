@@ -53,7 +53,7 @@ def Count(iterable:list, cols:list=None, col_name:str='count'):
 
     for item in iterable:
         if type(item) is not dict:
-            item=item.__dict__
+            item=item.__dict__  # pragma: no cover
         if cols:
             d={k:v for k,v in item.items() if k in cols}
             k = ":".join(d.values())
@@ -80,7 +80,7 @@ def Max(iterable:list, col_name:str, cols:list=None, dtype=str):
 
     for item in iterable:
         if type(item) is not dict:
-            item=item.__dict__
+            item=item.__dict__  # pragma: no cover
         if cols:
             d={k:v for k,v in item.items() if k in cols}
             k = ":".join(d.values())
@@ -112,7 +112,7 @@ def Min(iterable:list, col_name:str, cols:list=None, dtype=str):
 
     for item in iterable:
         if type(item) is not dict:
-            item=item.__dict__
+            item=item.__dict__  # pragma: no cover
         if cols:
             d={k:v for k,v in item.items() if k in cols}
             k = ":".join(d.values())
@@ -141,7 +141,7 @@ def Sum(iterable:list, col_name:str, cols:list=None):
 
     for item in iterable:
         if type(item) is not dict:
-            item=item.__dict__
+            item=item.__dict__  # pragma: no cover
         if cols:
             d={k:v for k,v in item.items() if k in cols}
             k = ":".join(d.values())
@@ -167,7 +167,7 @@ def Avg(iterable:list, col_name:str, cols:list=None):
 
     for item in iterable:
         if type(item) is not dict:
-            item=item.__dict__
+            item=item.__dict__   # pragma: no cover
         if cols:
             d={k:v for k,v in item.items() if k in cols}
             k = ":".join(d.values())

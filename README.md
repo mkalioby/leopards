@@ -207,4 +207,5 @@ Thanks for [Asma Tahir](https://github.com/tahirasma) for Pandas stats.
 
 ## Tutorials
 
+* [Usage with different file types](https://dev.to/mkalioby/leopards-with-different-file-types-1d3)
 * [Work on CSV Files with Leopards](https://dev.to/mkalioby/working-with-csv-by-leopards-5bmd)

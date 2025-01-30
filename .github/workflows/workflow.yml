@@ -22,6 +22,7 @@ jobs:
           - "3.10"
           - "3.11"
           - "3.12"
+          - "3.13"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
@@ -35,4 +36,4 @@ jobs:
           pip install pytest pytest-cov
       - name: Run tests
         run: |
-          pytest --cov=leopards tests/
+          pytest --cov=leopards tests/  --cov-report term-missing
