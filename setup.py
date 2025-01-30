@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='leopards',
-    version='0.9.0',
+    version='1.0.0',
     description='Allows filtering & aggregation iterable of dictionary by another dictionary. Much faster than pandas',
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
@@ -22,7 +22,7 @@ setup(
     zip_safe=False, # because we're including static files
     classifiers=[
         #"Development Status :: 4 - Beta",
-        "Development Status :: 5 - Production",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
